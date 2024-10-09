@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>SportProp</title>
-  <link rel="stylesheet" href="/PHPAssignment3/tech_support/css/main.css" />
+  <link rel="stylesheet" href="/PHPAssignment4/tech_support/css/main.css" />
 </head>
 
 <!-- the body section -->

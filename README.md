@@ -146,4 +146,4 @@ The **SportsPro Technical Support** suite comprises two main applications:
 
 ---
 
-**Note**: This application is part of a project exercise from "SportsPro Technical Support" and utilizes technologies outlined in chapters 1 to 6, with additional enhancements covering secure handling of sensitive data in later chapters.
+**Note**: This application is part of a project exercise from "SportsPro Technical Support"

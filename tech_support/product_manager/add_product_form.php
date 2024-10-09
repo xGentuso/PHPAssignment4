@@ -7,7 +7,7 @@ session_start();
   <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
-    <link rel="stylesheet" type="text/css" href="/PHPAssignment3/tech_support/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/PHPAssignment4/tech_support/css/main.css">
   </head>
 <body>
   <?php

@@ -18,7 +18,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Product Manager</title>
-    <link rel="stylesheet" type="text/css" href="/PHPAssignment3/tech_support/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/PHPAssignment4/tech_support/css/main.css">
   </head>
   <body>
     <?php include('../view/header.php'); ?>
@@ -56,7 +56,7 @@
           <?php endforeach; ?>
         </tbody>
       </table>
-      <a href="/PHPAssignment3/tech_support/product_manager/add_product_form.php">Add product</a>
+      <a href="/PHPAssignment4/tech_support/product_manager/add_product_form.php">Add product</a>
     </main>
     <?php include('../view/footer.php'); ?>
   </body>
