@@ -54,15 +54,15 @@ class TechnicianDB {
     }
   }
 
-  public function getAllTechnicianByID($techID) {
+  public function getTechnicianByID($techID) {
     try {
       $query = 'SELECT * FROM technicians WHERE techID = :techID';
       $statement = $this->db->prepare($query);
-      $statement->bindValue(':techID, $techID, PDO::PARAM_INT');
+      $statement->bindValue(':techID', $techID, PDO::PARAM_INT);
       $statement->execute();
       $row = $statement->fetch(PDO::FETCH_ASSOC);
       $statement->closeCursor();
-
+      
       return $row ? $row : null;
     } catch (PDOException $e) {
       $this->handleDatabaseError($e, "Unable to retrieve technician details. Please try again.");
