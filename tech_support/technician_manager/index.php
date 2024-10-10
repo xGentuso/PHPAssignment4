@@ -1,7 +1,11 @@
 <?php
-// technician_manager/index.php
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 session_start();
+
+// Temporarily assign the role for testing
+$_SESSION['role'] = 'admin'; 
 
 require_once('../model/database_oo.php');
 require_once('../model/technician.php');
@@ -22,7 +26,7 @@ try {
 <head>
   <meta charset="UTF-8">
   <title>Technician Manager</title>
-  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="/PHPAssignment4/tech_support/css/main.css">
 </head>
 <body>
   <?php include("../view/header.php"); ?>
@@ -51,7 +55,6 @@ try {
               <td>
                 <form action="delete_technician.php" method="post">
                   <input type="hidden" name="technician_id" value="<?php echo htmlspecialchars($technician->getTechID()); ?>">
-                  <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                   <input type="submit" value="Delete">
                 </form>
               </td>

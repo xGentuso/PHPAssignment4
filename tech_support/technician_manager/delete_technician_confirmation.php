@@ -17,7 +17,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Delete - Confirmation</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/PHPAssignment4/tech_support/css/main.css">
   </head>
   <body>
     <?php include("header.php"); ?>
@@ -36,8 +36,8 @@
         </p>
       </div>
       <p>
-        <a href="product_list.php">View Technicians List</a> | 
-        <a href="add_product_form.php">Add Another Technician</a> | 
+        <a href="index.php">View Technicians List</a> | 
+        <a href="add_technician_form.php">Add Another Technician</a> | 
         <a href="index.php">Back to Home</a>
       </p>
     </main>

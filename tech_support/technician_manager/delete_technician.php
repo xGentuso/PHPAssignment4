@@ -1,46 +1,56 @@
 <?php
   session_start();
-  
+  if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    $_SESSION['error_message'] = "Unauthorized access.";
+    error_log("Unauthorized access - role not set or not admin.");
+    header("Location: ../errors/error.php");
+    exit();
+}
+
   require_once('../model/database_oo.php');
   require_once('../model/technician.php');
   require_once('../model/technician_db_oo.php');
 
-  // optional: Role-Based Access Control
-  // ensure that only admins can delete technicians
+  // Role-Based Access Control: Ensure that only admins can delete technicians
   if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     $_SESSION['error_message'] = "Unauthorized access.";
+    error_log("Unauthorized access - role not set or not admin.");
     header("Location: ../errors/error.php");
     exit();
   }
-  
-  // retrieve and sanitize the technician ID from POST data
+
+  // Retrieve technician ID from POST data
   $tech_id = filter_input(INPUT_POST, 'technician_id', FILTER_VALIDATE_INT);
-  
+  error_log("Technician ID received: " . ($tech_id !== false ? $tech_id : 'Invalid technician ID'));
+
   if ($tech_id === NULL || $tech_id === FALSE) {
     $_SESSION['error_message'] = "Invalid Technician ID. Check all fields and try again.";
-    include('../errors/error.php');
+    error_log("Invalid Technician ID: $tech_id");
+    header("Location: ../errors/error.php");
+    exit();
   } else {
     try {
       // instantiate the TechnicianDB class
       $technicianDB = new TechnicianDB();
 
-      // delete the technician using the TechnicianDB class
-      $technicianDB->deleteTechnician($tech_id);
+      // 
+      $technician = $technicianDB->getTechnicianByID($tech_id);
 
       if ($technician === null) {
         $_SESSION['error_message'] = "Technician not found.";
+        error_log("Technician with ID $tech_id not found in the database.");
         header("Location: ../errors/error.php");
         exit();
       }
 
-      $_SESSION['deleted_technician_name'] = $technician->getFullName();
-
+      // delete the technician using the TechnicianDB class
+      error_log("Deleting technician with ID: $tech_id");
       $technicianDB->deleteTechnician($tech_id);
   
-      // optionally log the deletion of a technician
+      // log the successful deletion of a technician
       error_log("Technician '{$technician->getFullName()}' with ID $tech_id has been deleted.");
   
-      // redirect to confirmation page
+      // redirect to the confirmation page
       header("Location: delete_technician_confirmation.php");
       exit();
   
